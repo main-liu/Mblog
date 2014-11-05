@@ -1,7 +1,15 @@
+<div class="container">
 <% @blogs.each do |b| %>
-	<div class="panel">
-	<%= link_to b.title,blog_path(b.slug)%>
+	<div class="panel panel-blog">
+		<h3 class="under_line">
+			<%= link_to b.title,blog_path(b.slug) %>
+		</h3>
+		<div class="info">
+			浏览次数：<%= b.view_count%>|
+			发布:<%= b.created_at %>
+		</div>
 	<%= b.title %>
 	<%= b.content %>
 	</div>
 <% end %>
+</div>
