@@ -1,15 +1,17 @@
 <div class="container">
 <% @blogs.each do |b| %>
 	<div class="panel panel-blog">
-		<h3 class="under_line">
-			<%= link_to b.title,blog_path(b.slug) %>
-		</h3>
-		<div class="info">
-			浏览次数：<%= b.view_count%>|
+		<div class="blog_title">
+			<h3><%= link_to b.title,blog_path(b.slug) %></h3>
+		</div>
+		<div class="blog-info">
+			分类:<%=link_to b.category.name,root_path %> |
+			浏览次数：<%= b.view_count%> |
 			发布:<%= b.created_at %>
 		</div>
-	<%= b.title %>
-	<%= b.content %>
+		<div class="blog-body">
+			<%= b.content %>
+		</div>
 	</div>
 <% end %>
 </div>
