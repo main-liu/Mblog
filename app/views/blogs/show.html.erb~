@@ -1,0 +1,16 @@
+<div class="container">
+<div class="panel panel-default">
+	<h3><%= @blog.title %></h3>
+	<div class="panel-heading">
+	
+	浏览次数：<%= @blog.view_count%>
+	创建时间<%= @blog.created_at %>
+	</div>
+	<div class="panel-body">
+		<%= @blog.content %>
+	</div>
+</div>
+</div>
+
+
+

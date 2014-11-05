@@ -1,0 +1,3 @@
+<h1>Console::Categories#new</h1>
+<p>Find me in app/views/console/categories/new.html.erb</p>
+<%= render partial:'form',locals:{url:console_categories_path} %>

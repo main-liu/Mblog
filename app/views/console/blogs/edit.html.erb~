@@ -1,0 +1,8 @@
+<div class="container">
+	<div class="panel panel-default">
+		<div class="panel-heading">编辑博客</div>
+		<div class="panel-body">
+			<%= render 'form',url:console_blog_path %>
+		</div>
+	</div>
+</div>

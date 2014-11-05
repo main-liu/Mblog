@@ -1,0 +1,43 @@
+
+<div class="container">
+    <div class="panel panel-default">
+	<div class="panel-heading">
+	    <h3>博客管理 <%= link_to "新增",new_console_blog_path,class:"btn btn-primary" %></h3>
+	</div>
+	<div class="panel-body">
+	    <table class="table">
+		<thead>
+			<tr>
+			    <th>标题</th>
+			    <th>slug</th>
+			    <th>状态</th>
+			    <th>浏览次数</th>
+			    <th>类别</th>
+			    <th>操作</th>			
+			</tr>
+		</thead>
+		<tbody>
+		    <% @blogs.each do |b| %>
+			<tr>
+			    <td><%= b.title %></td>
+			    <td><%= b.slug %></td>
+			    <td>
+				<%= '私有' if b.status==0 %>
+				<%= '公开' if b.status==1 %>
+			    </td>
+			    <td><%= b.view_count %></td>
+			    <td><%= b.category.name %></td>
+			    <td>
+				<%=link_to "编辑",edit_console_blog_path(b.id),class:'btn btn-primary' %>
+				<%=link_to "删除",console_blog_path(b.id),class:'btn btn-danger',method:'delete',data:{confirm:'确定删除?'} %>
+			    </td>
+
+			</tr>
+		    <% end %>
+		</tbody>
+	    </table>
+	</div>
+	<div class="panel-footer">
+	</div>
+    </div>
+</div>

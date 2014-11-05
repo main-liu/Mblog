@@ -1,0 +1,5 @@
+<%= form_for @category,url:url do |f| %>
+	<%= f.label :name,'文章分类' %>
+	<%= f.text_field :name %>
+	<%= f.submit '提交' %>
+<% end %>

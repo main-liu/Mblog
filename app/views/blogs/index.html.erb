@@ -1,0 +1,7 @@
+<% @blogs.each do |b| %>
+	<div class="panel">
+	<%= link_to b.title,blog_path(b.slug)%>
+	<%= b.title %>
+	<%= b.content %>
+	</div>
+<% end %>
