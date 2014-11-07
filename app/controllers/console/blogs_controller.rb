@@ -1,6 +1,6 @@
 class Console::BlogsController < ApplicationController
   def index
-    @blogs=Blog.all
+    @blogs=Blog.recent.page(params[:page])
   end
 
   def new

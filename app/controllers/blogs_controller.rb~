@@ -1,22 +1,17 @@
 class BlogsController < ApplicationController
   def index
-    @blogs=Blog.all
+    @blogs=Blog.recent.where(:status=>1).page(params[:page])
   end
 
   def category
-    @category= Category.find_by(name:params[:name])
-    puts @category
-    @blogs
-    if @category.nil?
-        @blogs=Blog.where(category_id:0)
-    else
-        @blogs=Blog.where(:category_id=> @category.id).order('created_at DESC')
-    end
+    @blogs=Blog.recent.joins(:category).where("categories.name = ? AND status = 1", params[:name]).page(params[:page])
     render 'index'
   end
 
   def show
     @blog=Blog.find_by(slug:params[:slug])
+    @blog.update_blog_view_count
+    #raise ActiveRecord::RecordNotFound if @blog.nil?
     redirect_to root_path, alert:'您访问点博文不存在' unless @blog
   end
 end

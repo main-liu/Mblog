@@ -13,13 +13,14 @@
 			    <th>状态</th>
 			    <th>浏览次数</th>
 			    <th>类别</th>
+			    <th>修改时间</th>
 			    <th>操作</th>			
 			</tr>
 		</thead>
 		<tbody>
 		    <% @blogs.each do |b| %>
 			<tr>
-			    <td><%= b.title %></td>
+			    <td><%= link_to b.title,blog_path(b.slug) %></td>
 			    <td><%= b.slug %></td>
 			    <td>
 				<%= '私有' if b.status==0 %>
@@ -27,6 +28,7 @@
 			    </td>
 			    <td><%= b.view_count %></td>
 			    <td><%= b.category.name %></td>
+			    <td><%= b.updated_at %></td>
 			    <td>
 				<%=link_to "编辑",edit_console_blog_path(b.id),class:'btn btn-primary' %>
 				<%=link_to "删除",console_blog_path(b.id),class:'btn btn-danger',method:'delete',data:{confirm:'确定删除?'} %>
@@ -38,6 +40,8 @@
 	    </table>
 	</div>
 	<div class="panel-footer">
+		<%= paginate @blogs,:theme=>'theme2' %>
 	</div>
     </div>
 </div>
+

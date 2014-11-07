@@ -1,17 +1,18 @@
-<div class="container">
-<% @blogs.each do |b| %>
-	<div class="panel panel-blog">
-		<div class="blog_title">
-			<h3><%= link_to b.title,blog_path(b.slug) %></h3>
-		</div>
-		<div class="blog-info">
-			分类:<%=link_to b.category.name,root_path %> |
-			浏览次数：<%= b.view_count%> |
-			发布:<%= b.created_at %>
-		</div>
-		<div class="blog-body">
-			<%= b.content %>
-		</div>
-	</div>
+<%  @blogs.each do |b| %>
+			<div class="panel panel-blog">
+				<div class="blog_title">
+					<h3><%= link_to b.title,blog_path(b.slug) %></h3>
+				</div>
+				<div class="blog-info">
+					分类:<%=link_to b.category.name,category_path(b.category.name) %> |
+					浏览次数：<%= b.view_count%> |
+					发布:<%= show_date(b.created_at) %>
+				</div>
+				<div class="blog-body">
+					<%= raw b.html_content_summary %>
+				</div>
+			</div>
 <% end %>
-</div>
+<%= paginate @blogs,:theme=>'theme2' %>
+
+

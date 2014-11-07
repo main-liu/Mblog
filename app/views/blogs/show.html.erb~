@@ -1,13 +1,15 @@
 <div class="container">
 <div class="panel panel-default">
-	<h3><%= @blog.title %></h3>
+	<div class="blog_title">
+		<h3><%= link_to @blog.title,blog_path(@blog.slug) %></h3>
+	</div>
 	<div class="panel-heading">
 	
-	浏览次数：<%= @blog.view_count%>
-	创建时间<%= @blog.created_at %>
+	浏览次数：<%= @blog.view_count%> |
+	创建时间：<%= show_date(@blog.created_at) %>
 	</div>
 	<div class="panel-body">
-		<%= @blog.content %>
+                <%= raw @blog.html_content %>
 	</div>
 </div>
 </div>
